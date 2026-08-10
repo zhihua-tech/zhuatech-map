@@ -52,3 +52,7 @@ npm run dev:demo
 | ![微信咨询 A](docs/images/zhuatech-wechat-consulting.png) | ![微信咨询 B](docs/images/zhuatech-wechat-consulting-2.png) |
 
 关键词：营销自动化系统源码、MAP、营销旅程、客户分群、线索培育、全渠道营销、Java 营销系统、Vue 营销平台、知华科技。
+
+## 营销归因可信度
+
+新增 `POST /api/map/insights/attribution-confidence`，结合转化追踪率、收入归因率、用户同意覆盖和线下匹配率，计算归因可信度与归因 ROAS，输出 `RELIABLE`、`DIRECTIONAL` 或 `LOW_CONFIDENCE`。

@@ -1,0 +1,8 @@
+/* Copyright 2026 上海如静知华信息科技有限公司 */
+package cn.zhuatech.map.service;
+import jakarta.validation.constraints.*;import org.springframework.stereotype.Service;import java.math.*;import java.util.*;
+@Service public class AttributionConfidenceService {
+ public Result evaluate(Request r){double tracked=Math.min(100,r.trackedConversions()*100.0/r.totalConversions());double revenue=Math.min(100,r.attributedRevenue().multiply(BigDecimal.valueOf(100)).divide(r.totalRevenue(),1,RoundingMode.HALF_UP).doubleValue());int score=(int)Math.round(tracked*.4+revenue*.3+r.consentCoverage()*.2+r.offlineMatchRate()*.1);double roas=r.attributedRevenue().divide(r.spend(),2,RoundingMode.HALF_UP).doubleValue();String status=score>=85?"RELIABLE":score>=65?"DIRECTIONAL":"LOW_CONFIDENCE";List<String> actions=new ArrayList<>();if(tracked<90)actions.add("修复转化事件采集和跨域追踪缺口");if(r.consentCoverage()<90)actions.add("提升同意管理覆盖并保留合法性证据");if(r.offlineMatchRate()<70)actions.add("改善线下成交与营销触点匹配");if(actions.isEmpty())actions.add("归因证据稳定，可用于渠道预算优化");return new Result(score,Math.round(tracked*10)/10.0,Math.round(revenue*10)/10.0,roas,status,actions);}
+ public record Request(@Min(1) int totalConversions,@Min(0) int trackedConversions,@NotNull @DecimalMin("0.01") BigDecimal totalRevenue,@NotNull @DecimalMin("0") BigDecimal attributedRevenue,@NotNull @DecimalMin("0.01") BigDecimal spend,@DecimalMin("0") @DecimalMax("100") double consentCoverage,@DecimalMin("0") @DecimalMax("100") double offlineMatchRate){}
+ public record Result(int confidenceScore,double trackedConversionRate,double attributedRevenueRate,double attributedRoas,String status,List<String> actions){}
+}
