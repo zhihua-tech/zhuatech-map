@@ -1,4 +1,4 @@
-/* Copyright 2026 上海如静知华信息科技有限公司 */
+/* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.map.service;
 import cn.zhuatech.map.common.BusinessException; import cn.zhuatech.map.dto.MapDto.*; import cn.zhuatech.map.model.*; import cn.zhuatech.map.repository.*; import org.springframework.stereotype.Service; import org.springframework.transaction.annotation.Transactional; import java.util.*;
 @Service @Transactional(readOnly=true) public class MapService {
