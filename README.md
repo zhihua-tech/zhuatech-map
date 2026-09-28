@@ -1,5 +1,7 @@
 # ZhuaTech MAP
 
+[简体中文](README.md) | [English](README.en.md)
+
 **知华科技营销自动化平台社区源码版**
 
 受众洞察、内容协作、旅程编排、合规触达和收入归因，不再散落于多个工具。ZhuaTech MAP 由知华科技（上海如静知华信息科技有限公司）发布，官方网站：[www.zhuatech.cn](https://www.zhuatech.cn/)。
