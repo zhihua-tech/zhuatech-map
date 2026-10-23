@@ -1,0 +1,49 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "PASS",
+      "eligibleAudience": "#850",
+      "dailyRoom": "#200",
+      "candidateBatch": "#200"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "alreadyContacted": "501"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "candidateBatch": "#0"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "alreadyContacted": "500"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "doNotContact": "951"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "consented": "0",
+      "doNotContact": "0",
+      "otherSuppressed": "0"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  }
+]
